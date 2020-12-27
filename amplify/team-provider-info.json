@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-moscow-dev-132310-authRole",
+      "UnauthRoleArn": "arn:aws:iam::207802189926:role/amplify-moscow-dev-132310-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::207802189926:role/amplify-moscow-dev-132310-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-moscow-dev-132310-deployment",
+      "UnauthRoleName": "amplify-moscow-dev-132310-unauthRole",
+      "StackName": "amplify-moscow-dev-132310",
+      "StackId": "arn:aws:cloudformation:us-east-1:207802189926:stack/amplify-moscow-dev-132310/40426830-46de-11eb-a4aa-1214c28caebf",
+      "AmplifyAppId": "d13o64d068ngpr"
+    }
+  }
+}

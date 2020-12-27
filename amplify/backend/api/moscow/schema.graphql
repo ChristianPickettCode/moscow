@@ -1,0 +1,23 @@
+type User @model {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String
+  apiKeys: [ApiKey] @connection(keyName: "byApiKey", fields: ["id"])
+}
+
+type ApiKey @model @key(name: "byApiKey", fields: ["userID", "appName"]) {
+  id: ID!
+  appName: String!
+  userID: ID!
+  sessionCount: Int!
+  user: User @connection(fields: ["userID"])
+  sessions: [Session] @connection(keyName: "bySession", fields: ["id"])
+}
+
+type Session @model @key(name: "bySession", fields: ["apiKeyID", "id"]){
+  id: ID!
+  apiKeyID: ID!
+  type: String
+  apiKey: ApiKey @connection(fields: ["apiKeyID"])
+}
