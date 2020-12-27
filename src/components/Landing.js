@@ -56,7 +56,7 @@ const Landing = (props) => {
                         <Row justify="space-between">
                             <Col style={{ padding:"15% 3% 3% 3%"}} span={16}>
                                 <h1 style={{fontSize:"32px"}}>Contactless data transfers.</h1>
-                                <p>Passwordless authentication and form response via qr codes.</p>
+                                <p>Passwordless authentication, form response and registration via qr codes.</p>
                                 <p>For react developers.</p>
                                 <br />
                                 {/* <Row>
