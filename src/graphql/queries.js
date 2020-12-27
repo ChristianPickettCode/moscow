@@ -165,3 +165,37 @@ export const listSessions = /* GraphQL */ `
     }
   }
 `;
+export const sessionByApiKeyId = /* GraphQL */ `
+  query SessionByApiKeyId(
+    $apiKeyID: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelSessionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    sessionByApiKeyID(
+      apiKeyID: $apiKeyID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        apiKeyID
+        type
+        apiKey {
+          id
+          appName
+          userID
+          sessionCount
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

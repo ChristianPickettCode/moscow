@@ -1,26 +1,69 @@
 import React from 'react';
-import { Layout, PageHeader, Button, Image, Row, Col } from "antd";
+import { Layout, PageHeader, Button, Image, Row, Col, Divider } from "antd";
 import { Link, Switch, Route } from 'react-router-dom';
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
 const { Content, Footer } = Layout;
 
 const Landing = (props) => {
+    const codeSnippet = `
+    func App() {
+        return(
+            <Bridge 
+                request={{ 
+                    data: ["email", "name"], // "name" is optional
+                    appName: "your app name", 
+                    appID: "your app id" }}>
+                <Home />
+            </Bridge>
+        ) 
+    }
+    `
+
+    const codeSnippet2 = `
+    const Home = (prop) => {
+        return(
+            <div>
+                { props.user ?
+                    <div>
+                        <p>{props.user.email}</p>
+                        <button onClick={props.logout}>logout</button>
+                    </div>
+                : 
+                    <div>
+                        <button onClick={props.login}>login</button>
+                    </div>
+                }
+            </div>
+        ) 
+    }
+    `
+
     return (
         <Layout className="layout" style={{height: "100%"}}>
             <PageHeader
-                title={<Link to="/"><h3 style={{ margin:"0" }}>"Atlis"</h3></Link>}
+                title={<Link to="/"><h3 style={{ margin:"0" }}>"Atlis."</h3></Link>}
+                subTitle={<p style={{margin:"7px 0 0 0"}}>"for devs, by devs"</p>}
                 extra={[
-                    <Button key="2"><Link to="/about">About</Link></Button>,
+                    <Button key="2"><Link to="/code">Code</Link></Button>,
                     <Button key="1" type="primary" onClick={props.login}><Link to="/">App</Link></Button>,
                 ]}/>
             <Switch>
                 <Route exact path="/">
                     <Content style={{ padding: '2%', overflow:"scroll", backgroundColor:"white", margin:"auto", width:"96%", height:"100%", textAlign:"left" }}>
                         <Row justify="space-between">
-                            <Col style={{ padding:"10% 3% 3% 3%"}} span={16}>
-                                <h1 style={{fontSize:"32px"}}>Welcome</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <Col style={{ padding:"15% 3% 3% 3%"}} span={16}>
+                                <h1 style={{fontSize:"32px"}}>Contactless data transfers.</h1>
+                                <p>Passwordless authentication and form response via qr codes.</p>
+                                <p>For react developers.</p>
+                                <br />
+                                {/* <Row>
+                                    <Button type="danger">Register</Button>
+                                </Row> */}
                             </Col>
-                            <Col span={8} style={{alignSelf:"center"}}>
+                            <Col span={8} style={{alignSelf:"center", marginTop:"5vh"}}>
                                 <Image width={"100%"}  src="drawkit-nature-man-monochrome.svg"  preview={false}/>
                             </Col>
                         </Row>
@@ -28,41 +71,56 @@ const Landing = (props) => {
                     </Content>
                 </Route>
 
-                <Route path="/about">
+                <Route path="/code">
                 <Content style={{ padding: '2%', overflow:"scroll", backgroundColor:"white", margin:"auto", width:"96%", height:"100%", textAlign:"left" }}>
-                        <Row justify="space-between">
-                            <Col style={{ padding:"3%", width:"70%"}}>
-                                <h3>Welcome</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            </Col>
-                            <Col>
-                                <Image src="unlock-monochrome.svg" width={250}/>
-                            </Col>
-                        </Row>
-                        <Row style={{margin: "4% 3%"}}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Vitae purus faucibus ornare suspendisse. Bibendum est ultricies integer quis auctor elit sed vulputate mi. Scelerisque varius morbi enim nunc. Feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam. Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Id interdum velit laoreet id donec. Viverra mauris in aliquam sem fringilla.</p>
-                        </Row>
-                        <Row justify="space-around" style={{marginTop:"5%"}}>
-                            <Col>
-                                <Image src="drawkit-drawing-man-monochrome.svg" width={250} height={250}/>
-                            </Col>
+                <Content style={{ margin: '2% auto 0 auto', width:"95%", textAlign:"left"}}>
+                    <Content style={{ width:"100%", backgroundColor:"white", border:"1px #c4c4c4 solid", marginBottom:"2vh"}}>
+                        <div style={{ padding: "2%" }}>
+                            <h3 style={{margin:"0"}}>1. Install Package</h3>
+                            <Divider style={{marginTop:"10px", marginBottom:"10px"}} />
+                            <SyntaxHighlighter language="javascript" style={github}>
+                                yarn add @esotterik/bridge-library
+                            </SyntaxHighlighter>
+                            <SyntaxHighlighter language="javascript" style={github}>
+                                npm install @esotterik/bridge-library
+                            </SyntaxHighlighter>
+                        </div>
+                    </Content>
 
-                            <Col>
-                                <Image src="gamer-monochrome.svg" width={250} height={250}/>
-                            </Col>
+                    <Content style={{ width:"100%", backgroundColor:"white", border:"1px #c4c4c4 solid", marginBottom:"2vh"}}>
+                        <div style={{ padding: "2%" }}>
+                            <h3 style={{margin:"0"}}>2. Wrap Application</h3>
+                            <Divider style={{marginTop:"10px", marginBottom:"10px"}} />
+                            {/* <code style={{fontSize:"0.85em"}}>{codeSnippet}</code>*/}
+                            <SyntaxHighlighter language="javascript" style={github}>
+                                {codeSnippet}
+                            </SyntaxHighlighter>  
+                        </div>
+                    </Content>
 
-                            <Col>
-                                <Image src="drawkit-mobile-article-monochrome.svg" width={250} height={250}/>
-                            </Col>
-                        </Row>
-                        <Row style={{margin: "4% 3%"}}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum enim facilisis gravida neque convallis a cras semper auctor. Vitae purus faucibus ornare suspendisse. Bibendum est ultricies integer quis auctor elit sed vulputate mi. Scelerisque varius morbi enim nunc. Feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam. Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Id interdum velit laoreet id donec. Viverra mauris in aliquam sem fringilla.</p>
-                        </Row>
+
+                    <Content style={{ width:"100%", backgroundColor:"white", border:"1px #c4c4c4 solid", marginBottom:"2vh"}}>
+                        <div style={{ padding: "2%" }}>
+                            <p style={{margin:"0"}}>The data array contains the fields that will be requested from the user. Replace <b>"your app name"</b> and <b>"your app id"</b> with your created App Name key and App ID. <b>"name"</b> is optional and more available parameters will be added.</p>
+                        </div>
+                    </Content>
+
+                    <Content style={{ width:"100%", backgroundColor:"white", border:"1px #c4c4c4 solid", marginBottom:"2vh"}}>
+                        <div style={{ padding: "2%" }}>
+                            <h3 style={{margin:"0"}}>3. Access Props</h3>
+                            <Divider style={{marginTop:"10px", marginBottom:"10px"}} />
+                            <p>Within your Home component with prop you have access to the user object and login and logout functions.</p>
+                            <SyntaxHighlighter language="javascript" style={github}>
+                                {codeSnippet2}
+                            </SyntaxHighlighter>  
+
+                        </div>
+                    </Content>
+                    </Content>
                     </Content>
                 </Route>
             </Switch>
-            <Footer style={{ textAlign: 'center', backgroundColor:"transparent", padding:"12px 50px" }}>Made by <a href="https://twitter.com/esotterik" target="blank">@esotterik</a></Footer>
+            <Footer style={{ textAlign: 'center', backgroundColor:"transparent", padding:"12px 50px" }}>Made by <a href="https://twitter.com/esotterik" target="blank">@esotterik.</a></Footer>
         </Layout>
     )
 }
