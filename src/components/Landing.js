@@ -101,7 +101,7 @@ const Landing = (props) => {
 
                     <Content style={{ width:"100%", backgroundColor:"white", border:"1px #c4c4c4 solid", marginBottom:"2vh"}}>
                         <div style={{ padding: "2%" }}>
-                            <p style={{margin:"0"}}>The data array contains the fields that will be requested from the user. Replace <b>"your app name"</b> and <b>"your app id"</b> with your created App Name key and App ID. <b>"name"</b> is optional and more available parameters will be added.</p>
+                            <p style={{margin:"0"}}>The data array contains the fields that will be requested from the user. Replace <b>"your app name"</b> and <b>"your app id"</b> with your created Api Key App Name and App ID. <b>"name"</b> is optional and more available parameters will be added.</p>
                         </div>
                     </Content>
 
