@@ -33,18 +33,23 @@ const { Search } = Input;
 const Dashboard = (props) => {
 
     const codeSnippet = `
-    func App() {
+    import React from 'react'
+    import Atlis from 'atlis'
+
+    const App = () => {
         return(
-            <Bridge 
+            <Atlis 
                 request={{ 
                     data: ["email", "name"], // "name" is optional
                     appName: "your app name", 
                     appID: "your app id" }}>
                 <Home />
-            </Bridge>
-        ) 
+            </Atlis>
+        ); 
     }
-    `
+
+    export default App;
+    `;
 
     const codeSnippet2 = `
     const Home = (prop) => {
@@ -63,7 +68,8 @@ const Dashboard = (props) => {
             </div>
         ) 
     }
-    `
+    `;
+
     const location = useLocation();
     const [userData, setUserData] = useState(null);
     const [appName, setAppName] = useState("");
@@ -320,10 +326,10 @@ const Dashboard = (props) => {
                                         <h3 style={{margin:"0"}}>1. Install Package</h3>
                                         <Divider style={{marginTop:"10px", marginBottom:"10px"}} />
                                         <SyntaxHighlighter language="javascript" style={github}>
-                                            yarn add @esotterik/bridge-library
+                                            yarn add atlis
                                         </SyntaxHighlighter>
                                         <SyntaxHighlighter language="javascript" style={github}>
-                                            npm install @esotterik/bridge-library
+                                            npm install --save atlis
                                         </SyntaxHighlighter>
                                     </div>
                                 </Content>

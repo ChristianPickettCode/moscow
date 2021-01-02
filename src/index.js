@@ -7,20 +7,20 @@ import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
 
 import reportWebVitals from './reportWebVitals';
-import Bridge from "@esotterik/bridge-library"
+import Atlis from "atlis"
 
 Amplify.configure(awsExports);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Bridge 
+    <Atlis 
       request={{
         data: ["email", "name"],
         appName: "atlis",
         appID: "2a50a239-aaed-490f-8c94-032199ad0e64"
       }}>
       <App />
-    </Bridge>
+    </Atlis>
   </React.StrictMode>,
   document.getElementById('root')
 );

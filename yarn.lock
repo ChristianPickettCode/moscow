@@ -2484,16 +2484,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@esotterik/bridge-library@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@esotterik/bridge-library/-/bridge-library-0.0.6.tgz#bd0ee610caefe47172e07d1871903655f5721c8b"
-  integrity sha512-PjNZNqGlO6a/5W2qp+NeNh9WE8jiNe8b/aHRGhN44qD6kBcirHjbU9ekjFFgTHil90U84pVX3/SkN0O12fylnw==
-  dependencies:
-    crypto-js "^4.0.0"
-    evergreen-ui "^5.1.2"
-    qrcode.react "^1.0.0"
-    websocket "^1.0.33"
-
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -3909,6 +3899,16 @@ at-least-node@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
+
+atlis@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/atlis/-/atlis-0.0.7.tgz#1c9b75d91dc09c5a80339386e5175968af609ef8"
+  integrity sha512-LvEoNKWGiZBTItdcX+l4/jEVUafVCQK9jRQohZXuTEzuchK39AKKHi9DgrMZO+9+wUwfRNc8LKN6SPltbxDj0A==
+  dependencies:
+    crypto-js "^4.0.0"
+    evergreen-ui "^5.1.2"
+    qrcode.react "^1.0.0"
+    websocket "^1.0.33"
 
 atob@^2.1.2:
   version "2.1.2"
