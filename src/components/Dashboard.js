@@ -79,6 +79,7 @@ const Dashboard = (props) => {
     const [transferCount, setTransferCount] = useState(0);
 
     const getUser = async (id) => {
+        //console.log(id)
         return await API.graphql(graphqlOperation(queries.getUser, { id }));
     };
 
@@ -98,7 +99,7 @@ const Dashboard = (props) => {
         getUser(props.user.userAppID)
             .then((res) => {
                 if (res.data.getUser === null) {
-                    console.log("CREATE NEW USER");
+                    // console.log("CREATE NEW USER");
                     createUser(props.user.userAppID, props.user.email, props.user.name).then(res => {
                         setUserData(res.data.createUser); 
                     }).catch(err => {
