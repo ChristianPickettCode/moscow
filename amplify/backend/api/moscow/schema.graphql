@@ -13,6 +13,7 @@ type ApiKey @model @key(name: "byApiKey", fields: ["userID", "appName"]) {
   sessionCount: Int!
   user: User @connection(fields: ["userID"])
   sessions: [Session] @connection(keyName: "bySession", fields: ["id"])
+  whitelist: [String]
 }
 
 type Session @model 

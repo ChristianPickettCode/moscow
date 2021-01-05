@@ -17,6 +17,7 @@ export const createUser = /* GraphQL */ `
           appName
           userID
           sessionCount
+          whitelist
           createdAt
           updatedAt
         }
@@ -43,6 +44,7 @@ export const updateUser = /* GraphQL */ `
           appName
           userID
           sessionCount
+          whitelist
           createdAt
           updatedAt
         }
@@ -69,6 +71,7 @@ export const deleteUser = /* GraphQL */ `
           appName
           userID
           sessionCount
+          whitelist
           createdAt
           updatedAt
         }
@@ -110,6 +113,7 @@ export const createApiKey = /* GraphQL */ `
         }
         nextToken
       }
+      whitelist
       createdAt
       updatedAt
     }
@@ -146,6 +150,7 @@ export const updateApiKey = /* GraphQL */ `
         }
         nextToken
       }
+      whitelist
       createdAt
       updatedAt
     }
@@ -182,6 +187,7 @@ export const deleteApiKey = /* GraphQL */ `
         }
         nextToken
       }
+      whitelist
       createdAt
       updatedAt
     }
@@ -212,6 +218,7 @@ export const createSession = /* GraphQL */ `
         sessions {
           nextToken
         }
+        whitelist
         createdAt
         updatedAt
       }
@@ -245,6 +252,7 @@ export const updateSession = /* GraphQL */ `
         sessions {
           nextToken
         }
+        whitelist
         createdAt
         updatedAt
       }
@@ -278,6 +286,7 @@ export const deleteSession = /* GraphQL */ `
         sessions {
           nextToken
         }
+        whitelist
         createdAt
         updatedAt
       }

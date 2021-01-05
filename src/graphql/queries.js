@@ -14,6 +14,7 @@ export const getUser = /* GraphQL */ `
           appName
           userID
           sessionCount
+          whitelist
           createdAt
           updatedAt
         }
@@ -74,6 +75,7 @@ export const getApiKey = /* GraphQL */ `
         }
         nextToken
       }
+      whitelist
       createdAt
       updatedAt
     }
@@ -102,6 +104,7 @@ export const listApiKeys = /* GraphQL */ `
         sessions {
           nextToken
         }
+        whitelist
         createdAt
         updatedAt
       }
@@ -131,6 +134,7 @@ export const getSession = /* GraphQL */ `
         sessions {
           nextToken
         }
+        whitelist
         createdAt
         updatedAt
       }
@@ -155,6 +159,7 @@ export const listSessions = /* GraphQL */ `
           appName
           userID
           sessionCount
+          whitelist
           createdAt
           updatedAt
         }
@@ -189,6 +194,7 @@ export const sessionByApiKeyId = /* GraphQL */ `
           appName
           userID
           sessionCount
+          whitelist
           createdAt
           updatedAt
         }

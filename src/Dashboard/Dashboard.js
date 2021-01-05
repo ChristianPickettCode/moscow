@@ -5,7 +5,8 @@ import {
   RocketOutlined,
   LogoutOutlined,
   UserOutlined,
-  DashboardOutlined
+  DashboardOutlined,
+  EyeOutlined
 } from '@ant-design/icons';
 
 import {
@@ -25,6 +26,7 @@ import * as queries from "../graphql/queries";
 import moment from "moment";
 // import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import Whitelist from './Whitelist';
 
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -77,6 +79,7 @@ const Dashboard = (props) => {
     const [form] = Form.useForm();
     const [connectCount, setConnectCount] = useState(0);
     const [transferCount, setTransferCount] = useState(0);
+    const [notValidCount, setNotValidCount] = useState(0);
 
     const getUser = async (id) => {
         //console.log(id)
@@ -133,6 +136,7 @@ const Dashboard = (props) => {
     useEffect(() => {
         setConnectCount(0);
         setTransferCount(0);
+        setNotValidCount(0);
         if (userData) {
             userData.apiKeys.items.forEach(item => {
                 API.graphql(graphqlOperation(queries.listSessions, {
@@ -148,6 +152,9 @@ const Dashboard = (props) => {
                         }
                         if (i.type === "TRANSFER") {
                             setTransferCount(prev => prev + 1);
+                        }
+                        if (i.type === "NOT VALID") {
+                            setNotValidCount(prev => prev + 1);
                         }
                     })
                 }).catch(err => {
@@ -257,6 +264,7 @@ const Dashboard = (props) => {
                             <Row>
                                 <Tag color="orange" style={{padding:"8px"}}>CONNECT : {connectCount}</Tag>
                                 <Tag color="cyan" style={{padding:"8px"}}>TRANSFER : {transferCount}</Tag>
+                                <Tag color="error" style={{padding:"8px"}}>NOT VALID : {notValidCount}</Tag>
                             </Row>
                             <Content>
                                 { userData ? 
@@ -271,7 +279,7 @@ const Dashboard = (props) => {
                                                             rowKey="id"
                                                             dataSource={item.sessions}
                                                             columns={[
-                                                                { title:"Type", dataIndex:"type", render: type => (<Tag color={type === "CONNECT" ? "orange" : "cyan"}>{type}</Tag>)},
+                                                                { title:"Type", dataIndex:"type", render: type => (<Tag color={type === "CONNECT" ? "orange" : type === "NOT VALID" ? "error" : "cyan"}>{type}</Tag>)},
                                                                 { title:"ID", dataIndex:"id"},
                                                                 { title:"Time", dataIndex:"createdAt", render: date => (<>{moment(new Date(date)).fromNow()}</>)},
                                                             ]}
@@ -282,7 +290,8 @@ const Dashboard = (props) => {
                                                 { title : "App Name", dataIndex:"appName" },
                                                 { title : "App ID", dataIndex:"id" },
                                                 { title : "Session Count", dataIndex:"sessionCount", sorter:(a,b) => (a.sessionCount - b.sessionCount) },
-                                                { title : "Last Active", dataIndex:"updatedAt", sorter:(a,b) => (new Date(a.updatedAt) - new Date(b.updatedAt)), render: date => (<>{moment(new Date(date)).fromNow()}</>)}]}  
+                                                { title : "Last Active", dataIndex:"updatedAt", sorter:(a,b) => (new Date(a.updatedAt) - new Date(b.updatedAt)), render: date => (<>{moment(new Date(date)).fromNow()}</>)},
+                                                { title : "Whitelist", dataIndex:"id", render: (id) => <div style={{textAlign:"center"}}><Link to={`/whitelist/${id}`}><EyeOutlined /></Link></div>} ]}  
                                             />
                                     : <div style={{textAlign:"center", margin: "10% auto"}}><Spin/></div>}
                             </Content>
@@ -404,6 +413,7 @@ const Dashboard = (props) => {
                             </Content>
                         </>
                     </Route>
+                    <Route path="/whitelist/:id"><Whitelist userData={userData} /></Route>
                 </Switch>
                 
             </Layout>

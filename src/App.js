@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Dashboard from "./components/Dashboard";
-import Landing from "./components/Landing";
+import Dashboard from "./Dashboard/Dashboard";
+import Landing from "./Landing/Landing";
 
 import {
   BrowserRouter as Router,

@@ -3900,10 +3900,10 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-atlis@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/atlis/-/atlis-0.0.9.tgz#8cc1bb545c0f120990e653bde8d74d89ac4e0053"
-  integrity sha512-PKkwKCjEf++oONYpHSpXJuGVBsQ7VZciL3ZUcNIkkg1zQFlFBNnFpIiFFvZkQkJ1XaP22QOhkgZLvhNKyTFe6w==
+atlis@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/atlis/-/atlis-0.0.13.tgz#21f454cf756fcefbba13b1c13f011a0253a4ad9f"
+  integrity sha512-HhfFRJRdtXtX7YBHhpqMAkBE+jw6cS8JSf2AQpQsMm+6kBhzV6LDNyuX75HjHIrfd/66SMtfHOjskPH5gzzh1A==
   dependencies:
     crypto-js "^4.0.0"
     evergreen-ui "^5.1.2"
