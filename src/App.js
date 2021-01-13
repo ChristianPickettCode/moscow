@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import {
   BrowserRouter as Router
 } from "react-router-dom";
-import { Button, PageHeader, Spin } from "antd";
+import { Button, PageHeader, Spin, Image } from "antd";
 
 function App (props) {
   const [user, setUser] = useState(props.user);
@@ -38,8 +38,12 @@ function App (props) {
             <PageHeader
                 title={<a href="https://atlis.dev"><h3 style={{ margin:"0" }}>"Atlis."</h3></a>}
                 />
-            <h1 style={{marginTop:"4%"}}>Atlis Dashboard</h1>
-            <Button type="primary">Connect</Button>
+            <Image
+              width={400}
+              src="hiker-man-monochrome.svg"
+            />
+            <h1 style={{marginTop:"4%", fontSize:"50px"}}>Dashboard</h1>
+            <Button type="primary"><b>Enter</b></Button>
           </div> : <div style={{marginTop:"25%"}}><Spin /></div>}
       </Router>
     </div>
