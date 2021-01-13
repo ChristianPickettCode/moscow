@@ -37,6 +37,7 @@ function App (props) {
           <div onClick={connect}>
             <PageHeader
                 title={<a href="https://atlis.dev"><h3 style={{ margin:"0" }}>"Atlis."</h3></a>}
+                extra={<a href="https://atlis.dev"><Button>Home</Button></a>}
                 />
             <Image
               width={400}
